@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeScreen from './src/screens/HomeScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet } from 'react-native';
+import { StyleSheet} from 'react-native';
 
 const App = () => {
   return (

@@ -8,8 +8,7 @@ const UserStatus = () => {
       <View style={styles.subContainer}>
         {/* Icon */}
         <View style={styles.userIcon}>
-          <Text style={styles.textColor}>Lv {'07'}</Text>
-        </View>
+          <Text style={styles.textColor}>Lv {'07'}</Text> </View>
 
         <View style={styles.subTextContainer}>
           <Text style={[styles.textColor, styles.mainText]}>
