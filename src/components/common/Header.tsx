@@ -13,7 +13,7 @@ const Header = () => {
 
       <View>
         {/* Icon */}
-        <Icon name="user" size={24} color="white" />
+        {/* <Icon name="user" size={24} color="white" /> */}
       </View>
     </View>
   );
