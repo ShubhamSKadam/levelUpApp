@@ -85,7 +85,7 @@ const AreaProgress = () => {
   const cardWidth = screenWidth * 0.85;
 
   return (
-    <View style={{ flex: 1,marginHorizontal:12 }}>
+    <View style={{marginHorizontal:12}}>
       <FlatList
         data={areaTestData}
         renderItem={({ item }) => {
