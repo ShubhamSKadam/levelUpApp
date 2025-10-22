@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import AnimatedGradientProgressBar from './common/GradientProgressBar';
 
 let areaTestData = [
   {
@@ -19,20 +20,19 @@ let areaTestData = [
   },
 ];
 
-const AreaCard = () => {
+const AreaCard = ({ item }) => {
   return (
     <View style={styles.mainContainer}>
       {/* title container    */}
       <View style={styles.titleContainer}>
         <Icon name="laptop" size={25} color={'white'} />
-        <Text style={styles.titleText}>Coding</Text>
+        <Text style={styles.titleText}>{item.areaName}</Text>
       </View>
 
       <View style={styles.levelContainer}>
         <Text style={styles.lvText}>Lv. 7</Text>
         <Text style={styles.lvsmallText}>Lv. 8</Text>
       </View>
-
       <View />
 
       <View />
@@ -43,7 +43,13 @@ const AreaCard = () => {
 const AreaProgress = () => {
   return (
     <View style={{ flex: 1 }}>
-      <AreaCard />
+      <FlatList
+        data={areaTestData}
+        renderItem={({ item }) => {
+          return <AreaCard item={item} />;
+        }}
+        horizontal={true}
+      />
     </View>
   );
 };
