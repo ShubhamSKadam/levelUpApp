@@ -104,10 +104,10 @@ export default AreaProgress;
 
 const styles = StyleSheet.create({
   mainContainer: {
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 10,
     padding: 15,
-    borderColor: 'grey',
+    borderColor: '#2F2F2F',
     height: 120,
   },
   titleText: {
