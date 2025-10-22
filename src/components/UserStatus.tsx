@@ -4,11 +4,13 @@ import React from 'react';
 const UserStatus = () => {
   return (
     <View style={styles.container}>
-      <Text>User Status</Text>
       <View style={styles.subContainer}>
         {/* Icon */}
-        <View style={styles.userIcon}>
-          <Text style={styles.textColor}>Lv {'07'}</Text> </View>
+        <View style={styles.userIconParent}>
+          <View style={styles.userIcon}>
+            <Text style={styles.textColor}>Lv {'07'}</Text>{' '}
+          </View>
+        </View>
 
         <View style={styles.subTextContainer}>
           <Text style={[styles.textColor, styles.mainText]}>
@@ -27,8 +29,8 @@ export default UserStatus;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   textColor: {
     color: 'white',
@@ -52,4 +54,11 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   subTextContainer: {},
+  userIconParent: {
+    borderWidth: 2,
+    padding: 5,
+    borderColor: '#34D399',
+    borderRadius:50,
+
+  },
 });
