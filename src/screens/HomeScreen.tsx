@@ -9,7 +9,7 @@ const HomeScreen = () => {
         <View style={styles.mainView}>
             <Header />
             <UserStatus />
-            <AreaProgress/>
+            <AreaProgress />
         </View>
     );
 };
