@@ -1,19 +1,19 @@
 import { StyleSheet, View, StatusBar } from 'react-native';
 import React from 'react';
 import Header from '../components/common/Header';
-import UserStatus from '../components/UserStatus';
 import AreaProgress from '../components/AreaProgress';
 import TodaysTask from '../components/TodaysTask';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import UserDashboardStat from '../components/UserDashboardStat';
+import UserAreas from '../components/UserAreas';
 
 const HomeScreen = () => {
   return (
     <View style={styles.mainView}>
       <SafeAreaView />
       <Header />
-      <UserStatus />
-      <AreaProgress />
-      <TodaysTask />
+      <UserDashboardStat />
+      <UserAreas />
     </View>
   );
 };

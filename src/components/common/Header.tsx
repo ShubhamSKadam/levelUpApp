@@ -10,7 +10,7 @@ const Header = () => {
           source={require('../../assets/testUser.jpeg')}
           style={styles.userLogo}
         />
-        <Text style={styles.userText}>HungryFox</Text>
+        <Text style={styles.userText}>HungryWolf</Text>
       </View>
 
       {/* Total XP points overall */}
