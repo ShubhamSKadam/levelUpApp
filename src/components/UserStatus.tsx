@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     paddingVertical: 20,
+    flex: 1,
   },
   textColor: {
     color: 'white',
@@ -58,7 +59,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     padding: 5,
     borderColor: '#34D399',
-    borderRadius:50,
-
+    borderRadius: 50,
   },
 });

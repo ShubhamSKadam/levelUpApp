@@ -1,13 +1,13 @@
 import React from 'react';
-import HomeScreen from './src/screens/HomeScreen';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet} from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
+import AppNavigator from './src/navigation/AppNavigator';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.mainView}>
-      <HomeScreen />
-    </SafeAreaView>
+    <>
+      <StatusBar barStyle="light-content" backgroundColor="black" />
+      <AppNavigator />
+    </>
   );
 };
 
