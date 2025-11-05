@@ -1,84 +1,60 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import React from 'react';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const taskData = [
+const taskDummyData = [
   {
-    taskId: 0,
-    task: 'Complete wireframe design',
-    project: 'Website Redesign',
-    isCompleted: false,
-    gains: '15',
+    title: 'Design the new dashboard UI',
+    difficulty: 'Hard',
+    area: 'Project Phoenix',
   },
   {
-    taskId: 1,
-    task: 'Solve 2 problems from Trigonometry',
-    project: 'Mathematics',
-    isCompleted: true,
-    gains: '20',
+    title: 'Go for a 30 minute run',
+    difficulty: 'Medium',
+    area: 'Fitness',
   },
   {
-    taskId: 2,
-    task: 'Code Levelup App',
-    project: 'Programming',
-    isCompleted: true,
-    gains: '25',
+    title: 'Read one chapter of Atomic Habits',
+    difficulty: 'Easy',
+    area: 'Learning',
   },
   {
-    taskId: 3,
-    task: 'Read Atomic Habits',
-    project: 'Reading',
-    isCompleted: false,
-    gains: '10',
+    title: 'Review team pull requests',
+    difficulty: 'Medium',
+    area: 'Work',
   },
 ];
 
-const TaskCard = ({ item }) => {
+const TaskCard = ({ taskData }) => {
   return (
-    <View style={styles.taskContainer}>
-      {/* check icon  */}
-      <View style={styles.taskSubContainer}>
-        {item.isCompleted ? (
-          <Icon name="check-circle" color={'grey'} size={25} />
-        ) : (
-          <Icon name="circle" color={'grey'} size={25} />
-        )}
-
-        <View style={styles.textContainer}>
-          <Text style={styles.titleText} numberOfLines={1} ellipsizeMode='tail'>
-            {item.task}
-          </Text>
-          <Text style={styles.projectText}>{item.project}</Text>
-        </View>
+    <View>
+      <View>
+        <Icon name="check-box-outline-blank" color="white" size={30} />
       </View>
 
-      {/* xp container */}
-      <View style={styles.gainsContainer}>
-        <Text style={styles.gainsText}>{item.gains} xp</Text>
+      <View>
+        <Text style={{ color: 'white' }}>{taskData.title}</Text>
+
+        <View>
+          <Text>{taskData.difficulty}</Text>
+        </View>
+        <Text>{taskData.area}</Text>
       </View>
     </View>
   );
 };
 
 const TodaysTask = () => {
-
-  
   return (
-    <View style={styles.mainContainer}>
-      <Text style={styles.headerText}>Today's Task</Text>
+    <View>
+      {/* Header */}
+      <Text style={styles.headerText}>Today's Quest</Text>
 
       {/* Task List */}
-      <View>
-        <FlatList
-          data={taskData}
-          renderItem={({ item }) => {
-            return <TaskCard item={item} />;
-          }}
-          keyExtractor={item => item.taskId.toString()}
-         contentContainerStyle={{
-            gap:"15",
-          }} 
-        />
-      </View>
+      <FlatList
+        data={taskDummyData}
+        renderItem={({ item }) => <TaskCard taskData={item} />}
+      />
     </View>
   );
 };
@@ -86,49 +62,9 @@ const TodaysTask = () => {
 export default TodaysTask;
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    paddingHorizontal: 20,
-    marginTop: 12,
-  },
   headerText: {
+    color: 'white',
     fontSize: 20,
-    color: 'white',
-    fontWeight: 500,
-    marginVertical:18
-  },
-  taskContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  taskSubContainer: {
-    flexDirection: 'row',
-    flex: 1,
-    alignItems: 'center',
-  },
-  textContainer: {
-    flex: 1,
-    paddingHorizontal:12,
-  },
-  titleText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 400,
-  },
-  projectText: {
-    color: 'grey',
-    fontSize: 14,
-  },
-  gainsText: {
-    color: 'white',
-  },
-  gainsContainer: {
-    backgroundColor: 'grey',
-    paddingHorizontal: 5,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 25,
+    fontWeight: '500',
   },
 });

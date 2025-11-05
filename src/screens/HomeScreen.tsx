@@ -1,11 +1,10 @@
-import { StyleSheet, View, StatusBar } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import Header from '../components/common/Header';
-import AreaProgress from '../components/AreaProgress';
-import TodaysTask from '../components/TodaysTask';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import UserDashboardStat from '../components/UserDashboardStat';
 import UserAreas from '../components/UserAreas';
+import TodaysTask from '../components/TodaysTask';
 
 const HomeScreen = () => {
   return (
@@ -14,6 +13,7 @@ const HomeScreen = () => {
       <Header />
       <UserDashboardStat />
       <UserAreas />
+      <TodaysTask />
     </View>
   );
 };
