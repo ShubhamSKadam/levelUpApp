@@ -37,6 +37,27 @@ let taskDummyData = [
     isComplete: false,
     id: 4,
   },
+  {
+    title: 'Solve Leetcode',
+    difficulty: 'Hard',
+    area: 'Learning',
+    isComplete: false,
+    id: 5,
+  },
+  {
+    title: 'Learning to Draw',
+    difficulty: 'Easy',
+    area: 'Drawing',
+    isComplete: false,
+    id: 6,
+  },
+  {
+    title: 'Solve Discrete Math problems',
+    difficulty: 'Hard',
+    area: 'Math',
+    isComplete: false,
+    id: 7,
+  },
 ];
 
 const getViewColor = (difficulty: string) => {
@@ -74,19 +95,32 @@ const getTextColor = (difficulty: string) => {
   }
 };
 
-const TaskCard = ({ taskData, setTaskList }: any) => {
+const TaskCard = ({ taskData, toggleCheck }: any) => {
   return (
-    <TouchableOpacity style={styles.cardContainer} onPress={() => {}}>
+    <TouchableOpacity
+      style={styles.cardContainer}
+      onPress={() => {
+        toggleCheck(taskData.id);
+      }}
+      activeOpacity={1}
+    >
       <View>
         <Icon
           name={taskData.isComplete ? 'check-box' : 'check-box-outline-blank'}
-          color="grey"
+          color={taskData.isComplete ? '#359EFF' : 'grey'}
           size={30}
         />
       </View>
 
       <View style={styles.taskDataContainer}>
-        <Text style={styles.titleText}>{taskData.title}</Text>
+        <Text
+          style={[
+            styles.titleText,
+            taskData.isComplete ? { textDecorationLine: 'line-through' } : null,
+          ]}
+        >
+          {taskData.title}
+        </Text>
 
         <View style={styles.bottomCardContainer}>
           <View
@@ -111,13 +145,18 @@ const TaskCard = ({ taskData, setTaskList }: any) => {
 const TodaysTask = () => {
   const [taskList, setTaskList] = useState(taskDummyData);
 
-  const markComplete = (taskId: number) => {
-    const taskItem = taskList.find(item => item.id == taskId);
-    
+  const toggleCheck = (taskId: number) => {
+    const updatedTaskList = taskList.map(item => {
+      if (item.id === taskId) {
+        return { ...item, isComplete: !item.isComplete };
+      }
+      return item;
+    });
+    setTaskList(updatedTaskList);
   };
 
   return (
-    <View>
+    <View style={{ marginTop: 25 }}>
       {/* Header */}
       <Text style={styles.headerText}>Today's Quest</Text>
 
@@ -125,10 +164,11 @@ const TodaysTask = () => {
       <FlatList
         data={taskList}
         renderItem={({ item }) => (
-          <TaskCard taskData={item} setTaskList={setTaskList} />
+          <TaskCard taskData={item} toggleCheck={toggleCheck} />
         )}
         contentContainerStyle={{ gap: 12 }}
         keyExtractor={item => item.id.toString()}
+        scrollEnabled={false}
       />
     </View>
   );

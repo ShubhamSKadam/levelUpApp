@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, ScrollView, View, Text } from 'react-native';
 import React from 'react';
 import Header from '../components/common/Header';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -8,13 +8,13 @@ import TodaysTask from '../components/TodaysTask';
 
 const HomeScreen = () => {
   return (
-    <View style={styles.mainView}>
+    <ScrollView style={styles.mainView}>
       <SafeAreaView />
       <Header />
       <UserDashboardStat />
       <UserAreas />
       <TodaysTask />
-    </View>
+    </ScrollView>
   );
 };
 export default HomeScreen;
