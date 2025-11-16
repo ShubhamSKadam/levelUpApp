@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TitleHeader from '../components/common/TitleHeader';
@@ -20,18 +27,42 @@ const dummyAreaData = [
     id: 2,
     bgColor: 'orange',
   },
-  //   {
-  //     name: 'Reading',
-  //     level: 11,
-  //     totalXP: 100,
-  //     id: 3,
-  //   },
-  //   {
-  //     name: 'Meditation',
-  //     level: 3,
-  //     totalXP: 201,
-  //     id: 4,
-  //   },
+  {
+    name: 'Reading',
+    level: 11,
+    totalXP: 100,
+    id: 3,
+  },
+  {
+    name: 'Meditation',
+    level: 3,
+    totalXP: 201,
+    id: 4,
+  },
+  {
+    name: 'Reading',
+    level: 11,
+    totalXP: 100,
+    id: 5,
+  },
+  {
+    name: 'Meditation',
+    level: 3,
+    totalXP: 201,
+    id: 6,
+  },
+  {
+    name: 'Reading',
+    level: 11,
+    totalXP: 100,
+    id: 8,
+  },
+  {
+    name: 'Meditation',
+    level: 3,
+    totalXP: 201,
+    id: 10,
+  },
 ];
 
 const AreaCard = ({ areaData }: any) => {
@@ -72,18 +103,25 @@ const AreaCard = ({ areaData }: any) => {
 const AreaScreen = () => {
   const [areaData, setAreaData] = useState(dummyAreaData);
   return (
-    <View style={styles.mainContainer}>
-      <SafeAreaView />
-      <TitleHeader />
+    <>
+      <ScrollView style={styles.mainContainer}>
+        <SafeAreaView />
+        <TitleHeader />
 
-      <FlatList
-        data={areaData}
-        renderItem={({ item }) => <AreaCard areaData={item} />}
-        scrollEnabled={false}
-        keyExtractor={item => item.id.toString()}
-        contentContainerStyle={{ gap: 4 }}
-      />
-    </View>
+        <View style={styles.listContainer}>
+          <FlatList
+            data={areaData}
+            renderItem={({ item }) => <AreaCard areaData={item} />}
+            scrollEnabled={false}
+            keyExtractor={item => item.id.toString()}
+            contentContainerStyle={{ gap: 8 }}
+          />
+        </View>
+      </ScrollView>
+      <TouchableOpacity style={styles.addIcon}>
+        <Icon name={"add-sharp"} size={25} color={"black"}/>
+      </TouchableOpacity>
+    </>
   );
 };
 
@@ -138,5 +176,18 @@ const styles = StyleSheet.create({
   progressContainer: {
     width: '90%',
     marginTop: 20,
+  },
+  listContainer: {
+    marginTop: 30,
+    marginBottom:80,
+  },
+  addIcon: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    backgroundColor: '#4285F4',
+    padding: 8,
+    borderRadius: 50,
+    zIndex: 1000,
   },
 });
