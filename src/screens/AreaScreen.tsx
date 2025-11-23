@@ -11,6 +11,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import TitleHeader from '../components/common/TitleHeader';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as Progress from 'react-native-progress';
+import Modal from 'react-native-modal';
+import AreaModal from '../components/modal/AreaModal';
 
 const dummyAreaData = [
   {
@@ -102,6 +104,13 @@ const AreaCard = ({ areaData }: any) => {
 
 const AreaScreen = () => {
   const [areaData, setAreaData] = useState(dummyAreaData);
+  const [isModalVisible,setIsModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    console.log(isModalVisible);
+    setIsModalVisible((prev) => !prev)
+  }
+
   return (
     <>
       <ScrollView style={styles.mainContainer}>
@@ -118,9 +127,19 @@ const AreaScreen = () => {
           />
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.addIcon}>
-        <Icon name={"add-sharp"} size={25} color={"black"}/>
+      <TouchableOpacity style={styles.addIcon} onPress={toggleModal}>
+        <Icon name={'add-sharp'} size={25} color={'black'} />
       </TouchableOpacity>
+
+      <Modal
+        isVisible={isModalVisible} 
+        swipeDirection={'down'}
+        onSwipeComplete={()=> setIsModalVisible(false)}
+        onBackdropPress={()=>setIsModalVisible(false)}
+        style={styles.bottomModal}
+      >
+        <AreaModal/>
+     </Modal>
     </>
   );
 };
@@ -179,7 +198,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     marginTop: 30,
-    marginBottom:80,
+    marginBottom: 80,
   },
   addIcon: {
     position: 'absolute',
@@ -190,4 +209,9 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     zIndex: 1000,
   },
+  bottomModal:{
+    justifyContent:"flex-end",
+    margin:0
+  },
 });
+
